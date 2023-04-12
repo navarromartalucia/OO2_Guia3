@@ -61,4 +61,30 @@ public class PrestamoDao {
 		}
 		return lista;
 	}
+	
+	public void actualizar(Prestamo objeto) throws HibernateException {
+		try {
+			iniciaOperacion();
+			session.update(objeto);
+			tx.commit();
+		} catch (HibernateException he) {
+			manejaExcepcion(he);
+			throw he;
+		} finally {
+			session.close();
+		}
+	}
+	
+	public void eliminar(Prestamo objeto) throws HibernateException {
+		try {
+			iniciaOperacion();
+			session.delete(objeto);
+			tx.commit();
+		} catch (HibernateException he) {
+			manejaExcepcion(he);
+			throw he;
+		} finally {
+			session.close();
+		}
+	}
 }

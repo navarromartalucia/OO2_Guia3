@@ -8,7 +8,7 @@ import datos.Prestamo;
 public class PrestamoABM {
 	private PrestamoDao dao=new PrestamoDao();
 
-	public Prestamo traerPrestamo(long idPrestamo)throws Exception{
+	public Prestamo traer(long idPrestamo)throws Exception{
 		//Implementar: si el no existe el prestamo lanzar la excepción
 		if( dao.traerPorID(idPrestamo) == null) throw new Exception("ERROR: El ID del prestamo no se ha encontrado en la base de datos");
 		Prestamo p =dao.traerPorID(idPrestamo);
@@ -28,5 +28,12 @@ public class PrestamoABM {
 		return dao.agregar(p);
 	}
 	
+	public void modificar(Prestamo p){
+		dao.actualizar(p);
+	}
+	
+	public void eliminar(Prestamo p) {
+		dao.eliminar(p);
+	}
 	
 }

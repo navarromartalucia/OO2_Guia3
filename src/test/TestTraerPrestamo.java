@@ -17,23 +17,38 @@ public class TestTraerPrestamo {
 		//long idPrestamo=1;
 		System.out.println("\n---> TraerPrestamo idPrestamo="+ 1 + "\n\n");
 		try {
-			Prestamo p=prestamoABM.traerPrestamo(1);
+			Prestamo p=prestamoABM.traer(1);
 			System.out.println(p + "\nPertenece a "+p.getCliente());
 
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
-		//Hibernate.initialize(clienteABM);
 		
 		
 		//agregar prestamos
 		//llamar por ID me da null, llamar por dni retorna el cliente
-		long id = 2;
+		long id = 3;
 		System.out.println("-----------------------------------------------");
-		Cliente cliente1 = clienteABM.traer(id);
+		Cliente cliente2 = clienteABM.traer(id);
 		//System.out.println("cliente id: 2 " + cliente1);
-		prestamoABM.agregar(LocalDate.now(), 200.0, 50.0, 60, cliente1);
+		prestamoABM.agregar(LocalDate.now(), 500.0, 800.0, 770, cliente2);
 		
+		//modificar prestamo
+		try {
+			Prestamo p = prestamoABM.traer(id);
+			p.setCantCuotas(20);
+			prestamoABM.modificar(p);
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+		
+		//eliminar prestamo
+		try {
+			prestamoABM.eliminar(prestamoABM.traer(id));	
+			System.out.println("Prestamo eliminado");
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
 		
 		
 			
