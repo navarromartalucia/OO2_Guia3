@@ -2,6 +2,8 @@ package datos;
 import java.time.LocalDate;
 import java.util.Set;
 
+import org.hibernate.Hibernate;
+
 public class Cliente {
 	private long idCliente;
 	private String apellido;
@@ -74,9 +76,10 @@ public class Cliente {
 	}
 
 	public String toString(){
-		return (idCliente+" "+apellido+" "+nombre+" DNI: "+dni+" F.de Nacimiento:"
+		return ("\n" +idCliente+" "+apellido+" "+nombre+" DNI: "+dni+" F.de Nacimiento:"
 				+ fechaDeNacimiento.getDayOfMonth()+"/"+
-				fechaDeNacimiento.getMonthValue()+"/"+ fechaDeNacimiento.getYear()+" "+baja);
+				fechaDeNacimiento.getMonthValue()+"/"+ fechaDeNacimiento.getYear()+" "+baja + ", prestamos: " + 
+				this.prestamos.toString() + "\n------------------------------------------------------------------------");
 	}
 	
 	public Set<Prestamo> getPrestamos() {

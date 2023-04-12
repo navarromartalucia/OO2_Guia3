@@ -8,12 +8,12 @@ import datos.Cliente;
 public class ClienteABM {
 	ClienteDao dao = new ClienteDao();
 
-	public Cliente traer(int idCliente) {
+	public Cliente traer(long idCliente) {
 		Cliente c = dao.traer(idCliente);
 		return c;
 	}
 
-	public Cliente traer(long dni) {
+	public Cliente traer(int dni) {
 		Cliente c = dao.traer(dni);
 		return c;
 	}
@@ -40,6 +40,7 @@ public class ClienteABM {
 		//se hiciera habría que validar que el cliente no tenga dependencias
 		Cliente c = dao.traer(idCliente);
 		if(this.traer(c.getDni()) == null) throw new Exception ("ERROR: El cliente que desea eliminar no se ha encontrado");
+		if(this.traer(idCliente).getPrestamos()!=null) throw new Exception("ERROR: No se puede eliminar un cliente con prestamos");
 		dao.eliminar(c);
 	}
 			

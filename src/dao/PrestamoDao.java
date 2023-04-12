@@ -1,10 +1,12 @@
 package dao;
 import java.util.List;
+
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import datos.Cliente;
 import datos.Prestamo;
+
 
 public class PrestamoDao {
 	private static Session session;
@@ -20,7 +22,7 @@ public class PrestamoDao {
 		throw new HibernateException("ERROR en la capa de acceso a datos", he);
 	}
 
-	public Prestamo traer(long idPrestamo) throws HibernateException {
+	public Prestamo traerPorID(long idPrestamo) throws HibernateException {
 		Prestamo obj = null;
 		try {
 			iniciaOperacion();
@@ -31,9 +33,24 @@ public class PrestamoDao {
 		}
 		return obj;
 	}
+	
+	public int agregar(Prestamo objeto) {
+		int id = 0;
+		try {
+			iniciaOperacion();
+			id = Integer.parseInt(session.save(objeto).toString());
+			tx.commit();
+		} catch (HibernateException he) {
+			manejaExcepcion(he);
+			throw he;
+		} finally {
+			session.close();
+		}
+		return id;
+	}
 
 	@SuppressWarnings("unchecked")
-	public List<Prestamo> traer(Cliente c) throws HibernateException {
+	public List<Prestamo> traerPorCliente(Cliente c) throws HibernateException {
 		List<Prestamo> lista = null;
 		try {
 			iniciaOperacion();

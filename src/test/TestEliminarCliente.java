@@ -6,10 +6,11 @@ import negocio.ClienteABM;
 public class TestEliminarCliente {
 
 	public static void main(String[] args) {
-		ClienteABM abm = new ClienteABM();
-		try{
-			abm.eliminar(4);
-			System.out.println("Eliminado");
+		//intentar eliminar un cliente con prestamos
+		ClienteABM clienteABM = new ClienteABM();
+		try {
+			clienteABM.eliminar(1);
+			System.out.println("Cliente eliminado");
 		}catch (Exception e) {
 			System.out.println(e.getMessage());
 		}

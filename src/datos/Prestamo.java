@@ -71,7 +71,7 @@ public class Prestamo {
 	}
 		
 	public String toString() {
-		String prestamo = "Prestamo: $ " + monto + "\nFecha: " + fecha + "\nInteres: " + interes + "\nCant.de Cuotas: " + cantCuotas;
+		String prestamo = "\nPrestamo: $ " + monto + "\nFecha: " + fecha + "\nInteres: " + interes + "\nCant.de Cuotas: " + cantCuotas;
 		return prestamo;
 	}
 

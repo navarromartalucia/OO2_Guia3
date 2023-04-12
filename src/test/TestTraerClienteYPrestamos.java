@@ -12,6 +12,6 @@ public class TestTraerClienteYPrestamos {
 		System.out.println("\n---> Traer Cliente y Prestamos idCliente="+idCliente);
 		System.out.println("\n"+c);
 		//implementar Si este cliente no tiene prestamos otorgados imprima el mensaje
-		for (Prestamo p: c.getPrestamos()) System.out.println("\n"+p);
+		//for (Prestamo p: c.getPrestamos()) System.out.println("\n"+p);
 	}
 }
